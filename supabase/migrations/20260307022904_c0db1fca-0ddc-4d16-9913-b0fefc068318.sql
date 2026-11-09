@@ -1,0 +1,1 @@
+ALTER TABLE public.instructors ADD COLUMN photo_url text DEFAULT NULL;
