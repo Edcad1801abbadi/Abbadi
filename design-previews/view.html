@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>التصاميم</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#111;font-family:Arial,sans-serif;padding:30px 20px;color:#fff}
+h1{text-align:center;font-size:24px;margin-bottom:8px}
+p{text-align:center;color:#666;font-size:13px;margin-bottom:36px}
+.row{display:flex;gap:20px;justify-content:center;flex-wrap:wrap}
+
+/* ── كارد مشترك ── */
+.card{width:240px;border-radius:28px;padding:14px;position:relative}
+.badge{position:absolute;top:12px;right:12px;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900}
+.title{text-align:center;margin-bottom:14px;padding-top:4px}
+.title h2{font-size:15px;font-weight:800;margin-bottom:3px}
+.title small{font-size:10px;opacity:.6;display:block;margin-bottom:6px}
+.tag{display:inline-block;padding:2px 10px;border-radius:20px;font-size:9px;font-weight:700}
+
+/* ── screen ── */
+.screen{border-radius:18px;padding:14px}
+.row2{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;font-size:10px;font-weight:700;letter-spacing:1px}
+.sig{display:flex;gap:2px;align-items:flex-end}
+.sig span{width:3px;border-radius:2px;display:block}
+.lcd{border-radius:10px;padding:12px;margin-bottom:8px}
+.lcd b{font-size:18px;font-weight:900;display:block;font-family:monospace}
+.lcd small{font-size:9px;opacity:.5;letter-spacing:1px;margin-top:2px;display:block}
+.chips{display:flex;gap:4px;margin-bottom:8px;flex-wrap:wrap}
+.chip{padding:2px 8px;border-radius:5px;font-size:8px;font-weight:700}
+.btns{display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px;margin-bottom:8px}
+.btn{border-radius:8px;padding:8px 4px;text-align:center;font-size:8px;font-weight:700}
+.ptt{border-radius:12px;padding:14px;text-align:center;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;gap:6px}
+.dot{width:8px;height:8px;border-radius:50%;display:inline-block}
+
+/* ══ 1 - أخضر عسكري ══ */
+.c1{background:#080e04;border:1px solid #1e3810;box-shadow:0 0 40px rgba(100,220,40,.12)}
+.c1 .badge{background:#7ecf3a22;color:#7ecf3a;border:1px solid #7ecf3a55}
+.c1 .title h2{color:#7ecf3a}
+.c1 .tag{background:#7ecf3a18;color:#7ecf3a;border:1px solid #7ecf3a33}
+.c1 .screen{background:#0b1508;border:1px solid #1e3810}
+.c1 .row2{color:#7ecf3a}
+.c1 .sig span{background:#7ecf3a}
+.c1 .lcd{background:#060e04;border:1px solid #2a4a14}
+.c1 .lcd b{color:#7ecf3a}
+.c1 .chip{background:#1a3a10;color:#6aaa30}
+.c1 .chip.on{background:#7ecf3a22;color:#7ecf3a;border:1px solid #7ecf3a44}
+.c1 .btn{background:#0d1a08;border:1px solid #2a4a14;color:#4a7a24}
+.c1 .ptt{background:#1a3a0a;border:2px solid #7ecf3a44;color:#7ecf3a}
+
+/* ══ 2 - أزرق طائرة ══ */
+.c2{background:#040810;border:1px solid #102040;box-shadow:0 0 40px rgba(40,130,255,.12)}
+.c2 .badge{background:#4a9eff22;color:#4a9eff;border:1px solid #4a9eff55}
+.c2 .title h2{color:#4a9eff}
+.c2 .tag{background:#4a9eff18;color:#4a9eff;border:1px solid #4a9eff33}
+.c2 .screen{background:#060c1a;border:1px solid #102040}
+.c2 .row2{color:#4a9eff;font-family:monospace}
+.c2 .sig span{background:#4a9eff}
+.c2 .hr{height:2px;background:linear-gradient(90deg,transparent,#4a9eff,#00d4ff,#4a9eff,transparent);border-radius:2px;margin-bottom:8px}
+.c2 .lcd{background:#030810;border:1px solid #102040}
+.c2 .lcd b{color:#00d4ff}
+.c2 .chip{background:#102040;color:#4a9eff}
+.c2 .chip.on{background:#4a9eff22;color:#00d4ff;border:1px solid #4a9eff44}
+.c2 .btn{background:#040c18;border:1px solid #102040;color:#2a5080}
+.c2 .ptt{background:#081428;border:2px solid #4a9eff44;color:#4a9eff}
+
+/* ══ 3 - ذهبي إماراتي ══ */
+.c3{background:#0c0a06;border:1px solid #3a2808;box-shadow:0 0 40px rgba(220,160,20,.1)}
+.c3 .badge{background:#d4a02022;color:#d4a020;border:1px solid #d4a02055}
+.c3 .title h2{color:#d4a020}
+.c3 .tag{background:#d4a02018;color:#d4a020;border:1px solid #d4a02033}
+.c3 .screen{background:#0e0c08;border:1px solid #3a2808}
+.c3 .ghdr{background:linear-gradient(90deg,#c89010,#f0c040,#c89010);border-radius:8px;padding:8px 12px;margin-bottom:10px}
+.c3 .ghdr b{font-size:10px;font-weight:900;color:#1a0e00;display:block}
+.c3 .ghdr small{font-size:8px;color:#6a4a00}
+.c3 .plate{background:linear-gradient(180deg,#e0d8c0,#c0b8a0);border-radius:8px;border:2px solid #a09888;margin-bottom:8px;overflow:hidden}
+.c3 .pt{background:linear-gradient(180deg,#c89010,#a87010);padding:4px 10px;display:flex;justify-content:space-between;font-size:10px;font-weight:900;color:#1a0e00}
+.c3 .pn{padding:6px;text-align:center;font-size:20px;font-weight:900;color:#1a1208;font-family:monospace;letter-spacing:3px}
+.c3 .chip{background:#2a1c08;color:#8a6020}
+.c3 .chip.on{background:#d4a02022;color:#d4a020;border:1px solid #d4a02044}
+.c3 .btn{background:#100c06;border:1px solid #3a2808;color:#6a4a10}
+.c3 .ptt{background:#1a1408;border:2px solid #d4a02044;color:#d4a020}
+
+/* ══ 4 - بنفسجي نيون ══ */
+.c4{background:#060410;border:1px solid #1e1030;box-shadow:0 0 40px rgba(140,60,255,.16)}
+.c4 .badge{background:#a050ff22;color:#a050ff;border:1px solid #a050ff55}
+.c4 .title h2{color:#a050ff}
+.c4 .tag{background:#a050ff18;color:#a050ff;border:1px solid #a050ff33}
+.c4 .screen{background:#080618;border:1px solid #1e1030}
+.c4 .bname{font-size:13px;font-weight:900;letter-spacing:2px;background:linear-gradient(90deg,#a050ff,#50a0ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px}
+.c4 .orb{width:42px;height:42px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#c080ff,#5020a0);box-shadow:0 0 20px #a050ff70;display:flex;align-items:center;justify-content:center;margin:0 auto 8px;font-size:18px}
+.c4 .waves{display:flex;align-items:flex-end;gap:3px;height:28px;justify-content:center;margin-bottom:8px}
+.c4 .waves span{width:5px;border-radius:3px;background:linear-gradient(0deg,#5020a0,#a050ff)}
+.c4 .lcd{background:#040210;border:1px solid #1e1030}
+.c4 .lcd b{background:linear-gradient(90deg,#a050ff,#50a0ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-family:monospace}
+.c4 .chip{background:#140a28;color:#5030a0}
+.c4 .chip.on{background:#a050ff22;color:#a050ff;border:1px solid #a050ff44}
+.c4 .btn{background:#0a0618;border:1px solid #1e1030;color:#3a1a60}
+.c4 .btn.on{border-color:#a050ff44;color:#a050ff;background:#140a28}
+.c4 .ptt{background:#100828;border:2px solid #a050ff44}
+.c4 .ptt span{background:linear-gradient(90deg,#a050ff,#50a0ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+/* ══ 5 - برتقالي صناعي ══ */
+.c5{background:#0c0c0c;border:1px solid #282828;box-shadow:0 0 40px rgba(255,80,20,.1)}
+.c5 .badge{background:#ff601822;color:#ff6018;border:1px solid #ff601855}
+.c5 .title h2{color:#ff6018}
+.c5 .tag{background:#ff601818;color:#ff6018;border:1px solid #ff601833}
+.c5 .screen{background:#080808;border:1px solid #282828}
+.c5 .row2{color:#fff;letter-spacing:3px;font-size:9px}
+.c5 .ldot{width:10px;height:10px;border-radius:50%;background:#ff6018;box-shadow:0 0 10px #ff6018}
+.c5 .mtr{height:5px;background:#1a1a1a;border-radius:3px;overflow:hidden;margin-bottom:8px}
+.c5 .mtr div{height:100%;width:70%;background:linear-gradient(90deg,#ff2000,#ff6018,#ff9060);border-radius:3px}
+.c5 .lcd{background:#000;border:2px solid #282828}
+.c5 .lcd b{color:#ff6018}
+.c5 .divr{height:1px;background:linear-gradient(90deg,transparent,#282828,transparent);margin:8px 0}
+.c5 .chip{background:#181818;color:#484848}
+.c5 .chip.on{background:#ff601822;color:#ff6018;border:1px solid #ff601844}
+.c5 .btn{background:#101010;border:1px solid #282828;color:#404040}
+.c5 .btn.on{border-color:#ff601844;color:#ff6018}
+.c5 .ptt{background:#101010;border:2px solid #ff601866;color:#ff6018;box-shadow:inset 0 0 20px #ff601812}
+</style>
+</head>
+<body>
+
+<h1>🎨 تصاميم Emirates Mobility</h1>
+<p>افتح هذا الملف في المتصفح — اختر رقم التصميم الذي يعجبك</p>
+
+<div class="row">
+
+  <!-- 1 -->
+  <div class="card c1">
+    <div class="badge">1</div>
+    <div class="title">
+      <h2>Tactical Radio</h2>
+      <small>لاسلكي عسكري — أخضر حيوي</small>
+      <span class="tag">🎯 قوي واحترافي</span>
+    </div>
+    <div class="screen">
+      <div class="row2">
+        <span>EM · COMMS</span>
+        <div class="sig">
+          <span style="height:5px;opacity:.3"></span>
+          <span style="height:8px;opacity:.5"></span>
+          <span style="height:12px;opacity:.75"></span>
+          <span style="height:16px"></span>
+        </div>
+      </div>
+      <div class="lcd">
+        <b>TOWER 2</b>
+        <small>⬡ MESH ACTIVE · 4 PEERS</small>
+      </div>
+      <div class="chips">
+        <span class="chip on">● CONNECTED</span>
+        <span class="chip">HOST</span>
+        <span class="chip">PEERS: 4</span>
+      </div>
+      <div class="btns">
+        <div class="btn">🚗<br>Cars</div>
+        <div class="btn">👤<br>Instr.</div>
+        <div class="btn">#<br>Dial</div>
+      </div>
+      <div class="ptt">🎙 PUSH TO TALK</div>
+    </div>
+  </div>
+
+  <!-- 2 -->
+  <div class="card c2">
+    <div class="badge">2</div>
+    <div class="title">
+      <h2>Aviation Cockpit</h2>
+      <small>كوكبيت طائرة — أزرق مائي</small>
+      <span class="tag">✈️ تقني وأنيق</span>
+    </div>
+    <div class="screen">
+      <div class="row2">
+        <span>EMI // RADIO</span>
+        <span style="font-size:9px">▲ CH-02</span>
+      </div>
+      <div class="hr"></div>
+      <div class="lcd">
+        <b>TOWER-2</b>
+        <small>SQ: ON · PWR: HIGH · SIGNAL ▪▪▪▪░</small>
+      </div>
+      <div class="chips">
+        <span class="chip on">● TX READY</span>
+        <span class="chip">STUN</span>
+        <span class="chip">4 PEERS</span>
+      </div>
+      <div class="btns">
+        <div class="btn">🚗<br>Cars</div>
+        <div class="btn">✈<br>Inst.</div>
+        <div class="btn">#<br>Dial</div>
+      </div>
+      <div class="ptt" style="color:#00d4ff">🎙 TRANSMIT</div>
+    </div>
+  </div>
+
+  <!-- 3 -->
+  <div class="card c3">
+    <div class="badge">3</div>
+    <div class="title">
+      <h2>UAE Premium Gold</h2>
+      <small>هوية إماراتية — ذهبي فاخر</small>
+      <span class="tag">🇦🇪 هوية إماراتية</span>
+    </div>
+    <div class="screen">
+      <div class="ghdr">
+        <b>EMIRATES MOBILITY</b>
+        <small>Training Communications</small>
+      </div>
+      <div class="plate">
+        <div class="pt"><span>L</span><span style="font-size:8px;text-align:center">أبو ظبي<br>A.D</span><span>ت</span></div>
+        <div class="pn">1 0 9 8</div>
+      </div>
+      <div class="chips">
+        <span class="chip on">● متصل</span>
+        <span class="chip">4 peers</span>
+      </div>
+      <div class="btns">
+        <div class="btn">🚗<br>سيارات</div>
+        <div class="btn">👤<br>مدرب</div>
+        <div class="btn">#<br>اتصل</div>
+      </div>
+      <div class="ptt">🎙 اضغط للتحدث</div>
+    </div>
+  </div>
+
+  <!-- 4 -->
+  <div class="card c4">
+    <div class="badge">4</div>
+    <div class="title">
+      <h2>Neon Cyber</h2>
+      <small>مستقبلي نيون — بنفسجي</small>
+      <span class="tag">⚡ عصري وجريء</span>
+    </div>
+    <div class="screen">
+      <div class="bname">EM RADIO</div>
+      <div class="orb">🎙</div>
+      <div class="waves">
+        <span style="height:8px"></span><span style="height:22px"></span><span style="height:14px"></span><span style="height:28px"></span><span style="height:18px"></span><span style="height:24px"></span><span style="height:10px"></span><span style="height:20px"></span><span style="height:16px"></span>
+      </div>
+      <div class="lcd">
+        <b>TOWER 2</b>
+        <small>CHANNEL ACTIVE · 4 PEERS</small>
+      </div>
+      <div class="btns">
+        <div class="btn on">🚗<br>CARS</div>
+        <div class="btn">👤<br>INST</div>
+        <div class="btn">#<br>DIAL</div>
+      </div>
+      <div class="ptt">🎙 <span>PUSH TO TALK</span></div>
+    </div>
+  </div>
+
+  <!-- 5 -->
+  <div class="card c5">
+    <div class="badge">5</div>
+    <div class="title">
+      <h2>Industrial Pro</h2>
+      <small>صناعي احترافي — برتقالي</small>
+      <span class="tag">🔥 جدي وحازم</span>
+    </div>
+    <div class="screen">
+      <div class="row2">
+        <span>EMIRATES MOBILITY</span>
+        <div class="ldot"></div>
+      </div>
+      <div class="mtr"><div></div></div>
+      <div class="lcd">
+        <b>TOWER-2</b>
+        <small>SIGNAL STRONG · PTT READY</small>
+      </div>
+      <div class="divr"></div>
+      <div class="chips">
+        <span class="chip on">● CONNECTED</span>
+        <span class="chip">4 PEERS</span>
+      </div>
+      <div class="btns">
+        <div class="btn on">🚗<br>CARS</div>
+        <div class="btn">👤<br>INST</div>
+        <div class="btn">#<br>DIAL</div>
+      </div>
+      <div class="ptt">🎙 PUSH TO TALK</div>
+    </div>
+  </div>
+
+</div>
+
+<p style="margin-top:40px;font-size:13px;color:#444">اختر رقماً من 1 إلى 5</p>
+
+</body>
+</html>

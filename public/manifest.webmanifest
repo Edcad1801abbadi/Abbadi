@@ -1,0 +1,18 @@
+{
+  "name": "Emirates Mobility",
+  "short_name": "EM Radio",
+  "description": "Emirates Mobility PTT Communications System",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#09090b",
+  "theme_color": "#09090b",
+  "categories": ["business", "communication"],
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    }
+  ]
+}

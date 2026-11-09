@@ -1,0 +1,184 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap');
+
+@keyframes gateGradientMove {
+  0% { background-position: 0% 50% }
+  25% { background-position: 50% 0% }
+  50% { background-position: 100% 50% }
+  75% { background-position: 50% 100% }
+  100% { background-position: 0% 50% }
+}
+
+@keyframes gateShine {
+  from { transform: translateX(-120%) }
+  to { transform: translateX(140%) }
+}
+
+@keyframes gatePulse {
+  0%, 100% { transform: scale(1); opacity: 1 }
+  50% { transform: scale(1.35); opacity: 0.7 }
+}
+
+@keyframes gateSpin {
+  to { transform: rotate(360deg) }
+}
+
+@keyframes gateFadeInUp {
+  from { opacity: 0; transform: translateY(14px) }
+  to { opacity: 1; transform: translateY(0) }
+}
+
+@keyframes gateShake {
+  0%, 100% { transform: translateX(0) }
+  20% { transform: translateX(-10px) }
+  40% { transform: translateX(10px) }
+  60% { transform: translateX(-10px) }
+  80% { transform: translateX(10px) }
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 20% 7%;
+    --foreground: 210 20% 95%;
+
+    --card: 220 18% 12%;
+    --card-foreground: 210 20% 95%;
+
+    --popover: 220 18% 12%;
+    --popover-foreground: 210 20% 95%;
+
+    --primary: 145 70% 45%;
+    --primary-foreground: 220 20% 7%;
+
+    --secondary: 220 15% 18%;
+    --secondary-foreground: 210 20% 85%;
+
+    --muted: 220 15% 15%;
+    --muted-foreground: 215 15% 55%;
+
+    --accent: 35 90% 55%;
+    --accent-foreground: 220 20% 7%;
+
+    --destructive: 0 72% 55%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 15% 20%;
+    --input: 220 15% 20%;
+    --ring: 145 70% 45%;
+
+    --radius: 1rem;
+    --info: 210 90% 60%;
+
+    --sidebar-background: 220 18% 10%;
+    --sidebar-foreground: 210 20% 90%;
+    --sidebar-primary: 145 70% 45%;
+    --sidebar-primary-foreground: 220 20% 7%;
+    --sidebar-accent: 220 15% 18%;
+    --sidebar-accent-foreground: 210 20% 90%;
+    --sidebar-border: 220 15% 20%;
+    --sidebar-ring: 145 70% 45%;
+
+    --ptt-glow: 145 70% 45%;
+    --ptt-active: 0 72% 55%;
+    --wave: 145 70% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html, body, #root {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+    direction: ltr;
+    height: 100dvh;
+    overflow: hidden;
+  }
+}
+
+/* VIP Golden Gradient Name */
+.vip-name {
+  background: linear-gradient(
+    90deg,
+    #c9a227 0%,
+    #f7e98e 25%,
+    #d4a82f 50%,
+    #f7e98e 75%,
+    #c9a227 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: vip-shimmer 3s linear infinite;
+  font-weight: 800;
+}
+
+@keyframes vip-shimmer {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+/* VIP Animated Gradient Border */
+.vip-border {
+  position: relative;
+  border: none !important;
+}
+.vip-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 2px;
+  background: linear-gradient(
+    var(--vip-angle, 0deg),
+    #c9a227,
+    #f7e98e,
+    #d4a82f,
+    #a67c00,
+    #f7e98e,
+    #c9a227
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: vip-border-rotate 4s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes vip-border-rotate {
+  0% { --vip-angle: 0deg; }
+  100% { --vip-angle: 360deg; }
+}
+
+@property --vip-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
+@keyframes wave-bar {
+  0%, 100% {
+    height: 8px;
+  }
+  50% {
+    height: 28px;
+  }
+}

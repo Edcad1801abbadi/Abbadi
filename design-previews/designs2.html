@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>تصاميم Emirates Mobility</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  background: #111;
+  padding: 32px 16px;
+  min-height: 100vh;
+}
+h1 { color:#fff; text-align:center; font-size:26px; font-weight:900; margin-bottom:6px; }
+.sub { color:#555; text-align:center; font-size:13px; margin-bottom:40px; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+/* ── Phone Frame ── */
+.phone {
+  border-radius: 36px;
+  padding: 16px 12px;
+  position: relative;
+  overflow: hidden;
+}
+.phone::before {
+  content: '';
+  position: absolute;
+  top: 10px; left: 50%; transform: translateX(-50%);
+  width: 60px; height: 5px;
+  border-radius: 3px;
+  background: rgba(255,255,255,.1);
+}
+.label {
+  text-align: center;
+  margin-bottom: 16px;
+  padding-top: 8px;
+}
+.label h2 { font-size: 15px; font-weight: 800; margin-bottom: 3px; }
+.label p { font-size: 11px; opacity: .6; }
+.label .tag {
+  display: inline-block;
+  margin-top: 6px;
+  padding: 2px 10px;
+  border-radius: 20px;
+  font-size: 10px;
+  font-weight: 700;
+}
+.num-badge {
+  position: absolute; top: 14px; right: 16px;
+  width: 26px; height: 26px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 900;
+}
+
+/* ══ SCREEN CONTENT ══ */
+.screen {
+  border-radius: 20px;
+  padding: 16px;
+  margin: 0 4px;
+}
+
+/* Shared components */
+.top-bar {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 12px; font-size: 10px; font-weight: 700; letter-spacing: 1px;
+}
+.signal { display: flex; gap: 2px; align-items: flex-end; }
+.signal span { width: 3px; border-radius: 2px; display: block; }
+.lcd { border-radius: 10px; padding: 12px 14px; margin-bottom: 10px; }
+.lcd-main { font-size: 20px; font-weight: 900; letter-spacing: 1px; font-variant-numeric: tabular-nums; }
+.lcd-sub { font-size: 9px; margin-top: 3px; opacity: .5; letter-spacing: 1px; }
+.chips { display: flex; gap: 5px; margin-bottom: 10px; flex-wrap: wrap; }
+.chip { padding: 3px 8px; border-radius: 5px; font-size: 9px; font-weight: 700; }
+.btns3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 5px; margin-bottom: 10px; }
+.btn { border-radius: 8px; padding: 9px 4px; text-align: center; font-size: 9px; font-weight: 700; }
+.ptt {
+  border-radius: 14px; padding: 16px;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  font-size: 12px; font-weight: 800; letter-spacing: .5px;
+}
+.mic { font-size: 18px; }
+
+/* ══════════════════════════
+   1. TACTICAL — أخضر عسكري
+══════════════════════════ */
+.d1 { background: #080e04; border: 1px solid #1a3010; box-shadow: 0 0 50px rgba(80,200,30,.1); }
+.d1 .num-badge { background: #7ecf3a22; color: #7ecf3a; border: 1px solid #7ecf3a55; }
+.d1 .label h2 { color: #7ecf3a; }
+.d1 .tag { background: #7ecf3a18; color: #7ecf3a; border: 1px solid #7ecf3a33; }
+.d1 .screen { background: #0b1508; border: 1px solid #1e3a10; }
+.d1 .top-bar { color: #7ecf3a; }
+.d1 .signal span { background: #7ecf3a; }
+.d1 .lcd { background: #060e04; border: 1px solid #2a4a14; }
+.d1 .lcd-main { color: #7ecf3a; font-family: monospace; }
+.d1 .lcd-sub { color: #4a7a24; }
+.d1 .chip { background: #1a3a10; color: #6aaa30; }
+.d1 .chip.hi { background: #7ecf3a22; color: #7ecf3a; border: 1px solid #7ecf3a44; }
+.d1 .btn { background: #0d1a08; border: 1px solid #2a4a14; color: #4a7a24; }
+.d1 .ptt { background: #1a3a0a; border: 2px solid #7ecf3a44; color: #7ecf3a; }
+
+/* ══════════════════════════
+   2. COCKPIT — أزرق طائرة
+══════════════════════════ */
+.d2 { background: #040810; border: 1px solid #102040; box-shadow: 0 0 50px rgba(30,120,255,.12); }
+.d2 .num-badge { background: #4a9eff22; color: #4a9eff; border: 1px solid #4a9eff55; }
+.d2 .label h2 { color: #4a9eff; }
+.d2 .tag { background: #4a9eff18; color: #4a9eff; border: 1px solid #4a9eff33; }
+.d2 .screen { background: #060c1a; border: 1px solid #102040; }
+.d2 .top-bar { color: #4a9eff; font-family: monospace; }
+.d2 .signal span { background: #4a9eff; }
+.d2 .horizon { height: 2px; background: linear-gradient(90deg,transparent,#4a9eff,#00d4ff,#4a9eff,transparent); border-radius: 2px; margin-bottom: 10px; }
+.d2 .lcd { background: #030810; border: 1px solid #102040; }
+.d2 .lcd-main { color: #00d4ff; font-family: monospace; }
+.d2 .lcd-sub { color: #2a5080; }
+.d2 .gauge-row { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 10px; }
+.d2 .gauge { background: #030810; border: 1px solid #102040; border-radius: 8px; padding: 8px 10px; }
+.d2 .gauge-lbl { font-size: 8px; color: #2a5080; font-weight: 700; letter-spacing: 1px; }
+.d2 .gauge-val { font-size: 13px; color: #4a9eff; font-weight: 700; font-family: monospace; margin-top: 2px; }
+.d2 .chip { background: #102040; color: #4a9eff; }
+.d2 .chip.hi { background: #4a9eff22; color: #00d4ff; border: 1px solid #4a9eff44; }
+.d2 .btn { background: #040c18; border: 1px solid #102040; color: #2a5080; }
+.d2 .ptt { background: #081428; border: 2px solid #4a9eff44; color: #4a9eff; }
+
+/* ══════════════════════════
+   3. UAE GOLD — ذهبي إماراتي
+══════════════════════════ */
+.d3 { background: #0c0a06; border: 1px solid #3a2808; box-shadow: 0 0 50px rgba(220,160,20,.1); }
+.d3 .num-badge { background: #d4a02022; color: #d4a020; border: 1px solid #d4a02055; }
+.d3 .label h2 { color: #d4a020; }
+.d3 .tag { background: #d4a02018; color: #d4a020; border: 1px solid #d4a02033; }
+.d3 .screen { background: #0e0c08; border: 1px solid #3a2808; }
+.d3 .gold-header {
+  background: linear-gradient(90deg, #c89010, #f0c040, #c89010);
+  border-radius: 10px; padding: 10px 14px; margin-bottom: 12px;
+  display: flex; align-items: center; gap: 8px;
+}
+.d3 .gold-header-txt { font-size: 11px; font-weight: 900; color: #1a0e00; letter-spacing: .5px; }
+.d3 .gold-header-sub { font-size: 8px; color: #6a4a00; margin-top: 1px; }
+.d3 .plate {
+  background: linear-gradient(180deg, #e0d8c0, #c0b8a0);
+  border-radius: 8px; border: 2px solid #a09888;
+  margin-bottom: 10px; overflow: hidden;
+}
+.d3 .plate-top {
+  background: linear-gradient(180deg, #c89010, #a87010);
+  padding: 5px 12px; display: flex; justify-content: space-between;
+  font-size: 11px; font-weight: 900; color: #1a0e00;
+}
+.d3 .plate-num {
+  padding: 8px; text-align: center;
+  font-size: 22px; font-weight: 900; color: #1a1208;
+  font-family: monospace; letter-spacing: 3px;
+}
+.d3 .info-row { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 10px; }
+.d3 .info-box { background: #100c06; border: 1px solid #3a2808; border-radius: 8px; padding: 8px 10px; }
+.d3 .info-lbl { font-size: 8px; color: #6a4a10; font-weight: 700; }
+.d3 .info-val { font-size: 14px; color: #d4a020; font-weight: 900; font-family: monospace; margin-top: 2px; }
+.d3 .chip { background: #2a1c08; color: #8a6020; }
+.d3 .chip.hi { background: #d4a02022; color: #d4a020; border: 1px solid #d4a02044; }
+.d3 .btn { background: #100c06; border: 1px solid #3a2808; color: #6a4a10; }
+.d3 .ptt { background: #1a1408; border: 2px solid #d4a02044; color: #d4a020; }
+
+/* ══════════════════════════
+   4. NEON CYBER — بنفسجي مستقبلي
+══════════════════════════ */
+.d4 { background: #060410; border: 1px solid #1e1030; box-shadow: 0 0 50px rgba(140,60,255,.15); }
+.d4 .num-badge { background: #a050ff22; color: #a050ff; border: 1px solid #a050ff55; }
+.d4 .label h2 { color: #a050ff; }
+.d4 .tag { background: #a050ff18; color: #a050ff; border: 1px solid #a050ff33; }
+.d4 .screen { background: #080618; border: 1px solid #1e1030; }
+.d4 .top-bar-grad { font-size: 13px; font-weight: 900; letter-spacing: 2px; margin-bottom: 10px; }
+.d4 .orb {
+  width: 44px; height: 44px; border-radius: 50%; margin: 0 auto 10px;
+  background: radial-gradient(circle at 35% 35%, #c080ff, #5020a0);
+  box-shadow: 0 0 24px #a050ff70, 0 0 50px #a050ff30;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px;
+}
+.d4 .wave { display: flex; align-items: flex-end; gap: 3px; height: 32px; margin-bottom: 10px; justify-content: center; }
+.d4 .wave span { width: 5px; border-radius: 3px; background: linear-gradient(0deg, #5020a0, #a050ff); }
+.d4 .lcd { background: #040210; border: 1px solid #1e1030; }
+.d4 .lcd-main { background: linear-gradient(90deg, #a050ff, #50a0ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-family: monospace; }
+.d4 .lcd-sub { color: #3a1a60; }
+.d4 .chip { background: #140a28; color: #5030a0; }
+.d4 .chip.hi { background: #a050ff22; color: #a050ff; border: 1px solid #a050ff44; }
+.d4 .btn { background: #0a0618; border: 1px solid #1e1030; color: #3a1a60; }
+.d4 .btn.hi { border-color: #a050ff44; color: #a050ff; background: #140a28; }
+.d4 .ptt { background: #100828; border: 2px solid #a050ff44; }
+.d4 .ptt-txt { background: linear-gradient(90deg, #a050ff, #50a0ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 900; }
+
+/* ══════════════════════════
+   5. INDUSTRIAL — برتقالي ناري
+══════════════════════════ */
+.d5 { background: #0c0c0c; border: 1px solid #282828; box-shadow: 0 0 50px rgba(255,80,20,.1); }
+.d5 .num-badge { background: #ff601822; color: #ff6018; border: 1px solid #ff601855; }
+.d5 .label h2 { color: #ff6018; }
+.d5 .tag { background: #ff601818; color: #ff6018; border: 1px solid #ff601833; }
+.d5 .screen { background: #080808; border: 1px solid #282828; }
+.d5 .top-bar { color: #fff; }
+.d5 .live-dot { width: 10px; height: 10px; border-radius: 50%; background: #ff6018; box-shadow: 0 0 12px #ff6018; }
+.d5 .meter { height: 6px; background: #1a1a1a; border-radius: 3px; overflow: hidden; margin-bottom: 10px; }
+.d5 .meter-fill { height: 100%; width: 72%; background: linear-gradient(90deg, #ff2000, #ff6018, #ff9060); border-radius: 3px; }
+.d5 .lcd { background: #000; border: 2px solid #282828; }
+.d5 .lcd-main { color: #ff6018; font-family: monospace; }
+.d5 .lcd-sub { color: #501808; letter-spacing: 2px; }
+.d5 .div { height: 1px; background: linear-gradient(90deg, transparent, #282828, transparent); margin: 10px 0; }
+.d5 .chip { background: #181818; color: #484848; }
+.d5 .chip.hi { background: #ff601822; color: #ff6018; border: 1px solid #ff601844; }
+.d5 .btn { background: #101010; border: 1px solid #282828; color: #404040; }
+.d5 .btn.hi { border-color: #ff601844; color: #ff6018; }
+.d5 .btns4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 5px; margin-bottom: 10px; }
+.d5 .ptt { background: #101010; border: 2px solid #ff601866; color: #ff6018; box-shadow: inset 0 0 20px #ff601812; }
+
+footer { text-align: center; margin-top: 50px; color: #333; font-size: 12px; padding-bottom: 20px; }
+</style>
+</head>
+<body>
+
+<h1>🎨 تصاميم Emirates Mobility</h1>
+<p class="sub">اختر رقم التصميم الذي يعجبك وسيتم تطبيقه على كامل التطبيق</p>
+
+<div class="grid">
+
+  <!-- 1. TACTICAL GREEN -->
+  <div class="phone d1">
+    <span class="num-badge">1</span>
+    <div class="label">
+      <h2>Tactical Radio</h2>
+      <p>لاسلكي عسكري — أخضر حيوي</p>
+      <span class="tag">🎯 قوي واحترافي</span>
+    </div>
+    <div class="screen">
+      <div class="top-bar">
+        <span>EM · COMMS</span>
+        <div class="signal">
+          <span style="height:5px;opacity:.3"></span>
+          <span style="height:8px;opacity:.5"></span>
+          <span style="height:12px;opacity:.7"></span>
+          <span style="height:16px"></span>
+        </div>
+      </div>
+      <div class="lcd">
+        <div class="lcd-main">TOWER 2</div>
+        <div class="lcd-sub">⬡ MESH ACTIVE · 4 PEERS</div>
+      </div>
+      <div class="chips">
+        <span class="chip hi">● CONNECTED</span>
+        <span class="chip">HOST</span>
+        <span class="chip">PEERS: 4</span>
+      </div>
+      <div class="btns3">
+        <div class="btn">🚗<br>Cars (3)</div>
+        <div class="btn">👤<br>Instr.</div>
+        <div class="btn">#<br>Dial</div>
+      </div>
+      <div class="ptt"><span class="mic">🎙</span> PUSH TO TALK</div>
+    </div>
+  </div>
+
+  <!-- 2. AVIATION COCKPIT -->
+  <div class="phone d2">
+    <span class="num-badge">2</span>
+    <div class="label">
+      <h2>Aviation Cockpit</h2>
+      <p>كوكبيت طائرة — أزرق مائي</p>
+      <span class="tag">✈️ تقني وأنيق</span>
+    </div>
+    <div class="screen">
+      <div class="top-bar">
+        <span style="font-family:monospace">EMI // RADIO</span>
+        <span style="font-family:monospace;font-size:9px;color:#4a9eff">▲ CH-02</span>
+      </div>
+      <div class="horizon"></div>
+      <div class="lcd">
+        <div class="lcd-main">TOWER-2</div>
+        <div class="lcd-sub">SQ: ON · PWR: HIGH · SIGNAL: ▪▪▪▪░</div>
+      </div>
+      <div class="gauge-row">
+        <div class="gauge">
+          <div class="gauge-lbl">PEERS ONLINE</div>
+          <div class="gauge-val">04 ACTIVE</div>
+        </div>
+        <div class="gauge">
+          <div class="gauge-lbl">CONNECT TYPE</div>
+          <div class="gauge-val">HOST ▲</div>
+        </div>
+      </div>
+      <div class="chips">
+        <span class="chip hi">● TX READY</span>
+        <span class="chip">STUN</span>
+      </div>
+      <div class="ptt"><span class="mic">🎙</span> <span style="color:#00d4ff">TRANSMIT</span></div>
+    </div>
+  </div>
+
+  <!-- 3. UAE PREMIUM GOLD -->
+  <div class="phone d3">
+    <span class="num-badge">3</span>
+    <div class="label">
+      <h2>UAE Premium Gold</h2>
+      <p>هوية إماراتية — ذهبي فاخر</p>
+      <span class="tag">🇦🇪 هوية إماراتية</span>
+    </div>
+    <div class="screen">
+      <div class="gold-header">
+        <div>
+          <div class="gold-header-txt">EMIRATES MOBILITY</div>
+          <div class="gold-header-sub">Training Communications System</div>
+        </div>
+        <span style="font-size:18px;margin-right:auto;margin-left:6px">🚗</span>
+      </div>
+      <div class="plate">
+        <div class="plate-top">
+          <span>L</span>
+          <span style="font-size:8px;text-align:center">أبو ظبي<br>A.D</span>
+          <span>ت</span>
+        </div>
+        <div class="plate-num">1 0 9 8</div>
+      </div>
+      <div class="info-row">
+        <div class="info-box">
+          <div class="info-lbl">AREA</div>
+          <div class="info-val" style="font-size:12px">TOWER 2</div>
+        </div>
+        <div class="info-box">
+          <div class="info-lbl">SESSION</div>
+          <div class="info-val">12:30</div>
+        </div>
+      </div>
+      <div class="chips">
+        <span class="chip hi">● متصل</span>
+        <span class="chip">4 peers</span>
+      </div>
+      <div class="ptt"><span class="mic">🎙</span> اضغط للتحدث</div>
+    </div>
+  </div>
+
+  <!-- 4. NEON CYBER -->
+  <div class="phone d4">
+    <span class="num-badge">4</span>
+    <div class="label">
+      <h2>Neon Cyber</h2>
+      <p>مستقبلي نيون — بنفسجي جريء</p>
+      <span class="tag">⚡ عصري وجريء</span>
+    </div>
+    <div class="screen">
+      <div class="top-bar-grad" style="background:linear-gradient(90deg,#a050ff,#50a0ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">EM RADIO</div>
+      <div class="orb">🎙</div>
+      <div class="wave">
+        <span style="height:8px"></span><span style="height:20px"></span><span style="height:14px"></span><span style="height:28px"></span><span style="height:18px"></span><span style="height:24px"></span><span style="height:12px"></span><span style="height:22px"></span><span style="height:16px"></span><span style="height:26px"></span>
+      </div>
+      <div class="lcd">
+        <div class="lcd-main">TOWER 2</div>
+        <div class="lcd-sub">CHANNEL ACTIVE · 4 PEERS</div>
+      </div>
+      <div class="btns3">
+        <div class="btn hi">🚗 CARS</div>
+        <div class="btn">👤 INST</div>
+        <div class="btn"># DIAL</div>
+      </div>
+      <div class="ptt"><span class="mic">🎙</span><span class="ptt-txt">PUSH TO TALK</span></div>
+    </div>
+  </div>
+
+  <!-- 5. INDUSTRIAL PRO -->
+  <div class="phone d5">
+    <span class="num-badge">5</span>
+    <div class="label">
+      <h2>Industrial Pro</h2>
+      <p>صناعي احترافي — برتقالي ناري</p>
+      <span class="tag">🔥 جدي وحازم</span>
+    </div>
+    <div class="screen">
+      <div class="top-bar">
+        <span style="font-weight:900;letter-spacing:3px;font-size:10px">EMIRATES MOBILITY</span>
+        <div class="live-dot"></div>
+      </div>
+      <div class="meter"><div class="meter-fill"></div></div>
+      <div class="lcd">
+        <div class="lcd-main">TOWER-2</div>
+        <div class="lcd-sub">SIGNAL STRONG · PTT READY</div>
+      </div>
+      <div class="div"></div>
+      <div class="chips">
+        <span class="chip hi">● CONNECTED</span>
+        <span class="chip">4 PEERS</span>
+        <span class="chip">HOST</span>
+      </div>
+      <div class="btns4">
+        <div class="btn hi">🚗<br>CARS</div>
+        <div class="btn">👤<br>INST</div>
+        <div class="btn">#<br>DIAL</div>
+        <div class="btn">📋<br>LOG</div>
+      </div>
+      <div class="ptt"><span class="mic">🎙</span> PUSH TO TALK</div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  اختر رقماً من 1 إلى 5 وسيتم تطبيق التصميم على التطبيق كاملاً
+</footer>
+
+</body>
+</html>
