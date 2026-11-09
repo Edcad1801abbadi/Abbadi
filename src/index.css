@@ -1,0 +1,248 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap');
+
+@keyframes gateGradientMove {
+  0% { background-position: 0% 50% }
+  25% { background-position: 50% 0% }
+  50% { background-position: 100% 50% }
+  75% { background-position: 50% 100% }
+  100% { background-position: 0% 50% }
+}
+
+@keyframes gateShine {
+  from { transform: translateX(-120%) }
+  to { transform: translateX(140%) }
+}
+
+@keyframes gatePulse {
+  0%, 100% { transform: scale(1); opacity: 1 }
+  50% { transform: scale(1.35); opacity: 0.7 }
+}
+
+@keyframes gateSpin {
+  to { transform: rotate(360deg) }
+}
+
+@keyframes gateFadeInUp {
+  from { opacity: 0; transform: translateY(14px) }
+  to { opacity: 1; transform: translateY(0) }
+}
+
+@keyframes gateShake {
+  0%, 100% { transform: translateX(0) }
+  20% { transform: translateX(-10px) }
+  40% { transform: translateX(10px) }
+  60% { transform: translateX(-10px) }
+  80% { transform: translateX(10px) }
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 20% 7%;
+    --foreground: 210 20% 95%;
+
+    --card: 220 18% 12%;
+    --card-foreground: 210 20% 95%;
+
+    --popover: 220 18% 12%;
+    --popover-foreground: 210 20% 95%;
+
+    --primary: 145 70% 45%;
+    --primary-foreground: 220 20% 7%;
+
+    --secondary: 220 15% 18%;
+    --secondary-foreground: 210 20% 85%;
+
+    --muted: 220 15% 15%;
+    --muted-foreground: 215 15% 55%;
+
+    --accent: 35 90% 55%;
+    --accent-foreground: 220 20% 7%;
+
+    --destructive: 0 72% 55%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 15% 20%;
+    --input: 220 15% 20%;
+    --ring: 145 70% 45%;
+
+    --radius: 1rem;
+    --info: 210 90% 60%;
+
+    --sidebar-background: 220 18% 10%;
+    --sidebar-foreground: 210 20% 90%;
+    --sidebar-primary: 145 70% 45%;
+    --sidebar-primary-foreground: 220 20% 7%;
+    --sidebar-accent: 220 15% 18%;
+    --sidebar-accent-foreground: 210 20% 90%;
+    --sidebar-border: 220 15% 20%;
+    --sidebar-ring: 145 70% 45%;
+
+    --ptt-glow: 145 70% 45%;
+    --ptt-active: 0 72% 55%;
+    --wave: 145 70% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html, body, #root {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+    direction: ltr;
+    height: 100dvh;
+    overflow: hidden;
+  }
+}
+
+/* VIP Golden Gradient Name */
+.vip-name {
+  background: linear-gradient(
+    90deg,
+    #c9a227 0%,
+    #f7e98e 25%,
+    #d4a82f 50%,
+    #f7e98e 75%,
+    #c9a227 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: vip-shimmer 3s linear infinite;
+  font-weight: 800;
+}
+
+@keyframes vip-shimmer {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+/* VIP Animated Gradient Border */
+.vip-border {
+  position: relative;
+  border: none !important;
+}
+.vip-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 2px;
+  background: linear-gradient(
+    var(--vip-angle, 0deg),
+    #c9a227,
+    #f7e98e,
+    #d4a82f,
+    #a67c00,
+    #f7e98e,
+    #c9a227
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: vip-border-rotate 4s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes vip-border-rotate {
+  0% { --vip-angle: 0deg; }
+  100% { --vip-angle: 360deg; }
+}
+
+@property --vip-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
+@keyframes wave-bar {
+  0%, 100% {
+    height: 8px;
+  }
+  50% {
+    height: 28px;
+  }
+}
+
+@layer components {
+  .glass {
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(20px) saturate(140%);
+    -webkit-backdrop-filter: blur(20px) saturate(140%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  }
+  .glass-card { @apply glass rounded-2xl; }
+  .glass-strong {
+    background: rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(24px) saturate(160%);
+    -webkit-backdrop-filter: blur(24px) saturate(160%);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+  }
+  .glass-nav {
+    background: rgba(10, 15, 26, 0.7);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .glass-bg {
+    background:
+      radial-gradient(1200px 800px at 10% -10%, rgba(34, 211, 238, 0.10), transparent 60%),
+      radial-gradient(900px 700px at 110% 110%, rgba(168, 85, 247, 0.08), transparent 60%),
+      linear-gradient(180deg, #0a0f1a 0%, #050810 100%);
+  }
+}
+
+/* Flowing UAE flag → orange gradient that fills the logo silhouette */
+@keyframes logo-flow {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.logo-flow {
+  background:
+    linear-gradient(
+      90deg,
+      #00843D 0%,
+      #FFFFFF 10%,
+      #000000 20%,
+      #EF3340 32%,
+      #00843D 44%,
+      #FFFFFF 52%,
+      #000000 62%,
+      #EF3340 72%,
+      #FF8A00 82%,
+      #FFB347 90%,
+      #FF6A00 100%
+    );
+  background-size: 300% 100%;
+  animation: logo-flow 7s linear infinite;
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+          mask-position: center;
+  -webkit-mask-size: contain;
+          mask-size: contain;
+  filter: drop-shadow(0 8px 18px rgba(0,0,0,0.35));
+}
+

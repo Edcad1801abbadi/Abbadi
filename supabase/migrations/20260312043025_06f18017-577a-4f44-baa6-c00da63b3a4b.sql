@@ -1,0 +1,2 @@
+UPDATE instructors SET position = 'Training Supervisor' WHERE employee_id IN (497, 788, 1257, 1512);
+UPDATE instructors SET position = 'Senior Trainer' WHERE employee_id IN (781, 782, 790, 801, 858, 859);

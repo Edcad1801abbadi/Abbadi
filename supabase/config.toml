@@ -1,0 +1,13 @@
+project_id = "yseiifpaerieigjttybe"
+
+[functions.get-turn-credentials]
+verify_jwt = false
+
+[functions.car-assistant]
+verify_jwt = false
+
+[functions.instructor-assistant]
+verify_jwt = false
+
+[functions.elevenlabs-tts]
+verify_jwt = false
